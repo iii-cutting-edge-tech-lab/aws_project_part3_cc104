@@ -9,3 +9,4 @@ docker-compose down          #將container停止運行並刪除
 #在下次運行時，只需要執行
 cd aws_project_part3_cc104/docker-compose      
 docker-compose up -d 
+
