@@ -1,0 +1,9 @@
+{
+  "version": 1,
+  "timestamp": 1548715028860,
+  "subscriptions": [],
+  "topics": [{
+    "arn": "arn:aws:sns:us-east-1:123456789012:vcloudlab_topic",
+    "name": "vcloudlab_topic"
+  }]
+}

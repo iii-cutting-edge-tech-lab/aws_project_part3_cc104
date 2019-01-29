@@ -1,0 +1,59 @@
+version: '3'
+services:
+  jupyter-tutorial:
+    build: .
+    container_name: jupyter.local
+    ports:
+      - "8888:8888"
+      - "5000:5000"
+    volumes:
+      - ./work:/home/jovyan/work/
+    command: start-notebook.sh --NotebookApp.token=''
+  mysql:
+    image: mysql:5.7
+    container_name: mysql.vcloudlab.pro
+    ports:
+      - "3306:3306"
+    volumes:
+      - ./mysql/data:/data/db/
+    environment:
+      - MYSQL_ROOT_PASSWORD=iii
+  dynamodb:
+    image: amazon/dynamodb-local
+    container_name: dynamodb.vcloudlab.pro
+    ports:
+      - "8000:8000"
+    volumes:
+      - ./dynamodb:/home/dynamodblocal/data
+  s3-local:
+    image: gliffy/fake-s3
+    container_name: s3.vcloudlab.pro
+    ports:
+      - "4569:4569"
+    volumes:
+      - ./s3:/fakes3_root
+  sns:
+    image: s12v/sns
+    container_name: sns.vcloudlab.pro
+    ports:
+    - "9911:9911"
+    volumes:
+    - ./config/db.json:/etc/sns/db.json
+    depends_on:
+    - sqs
+    - jupyter-tutorial
+  sqs:
+    image: s12v/elasticmq
+    container_name: sqs.vcloudlab.pro
+    ports:
+    - "9324:9324"
+    volumes:
+    - ./config/elasticmq.conf:/etc/elasticmq/elasticmq.conf
+    depends_on:
+    - jupyter-tutorial
+  redis:
+    image: redis:5.0
+    container_name: redis.vcloudlab.pro
+    ports:
+    - "6379:6379"
+    command: redis-server --requirepass "iii" --appendonly "yes"
