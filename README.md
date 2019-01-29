@@ -8,11 +8,11 @@
   - docker-compose build
   - docker-compose up -d
  
-結束執行程式(在terminal)
+結束執行程式(在linux terminal)
 
   - docker-compose down
 
-執行程式(在terminal)
+執行程式(在linux terminal)
 
   - cd aws_project_part3_cc104
   - docker-compose up -d
