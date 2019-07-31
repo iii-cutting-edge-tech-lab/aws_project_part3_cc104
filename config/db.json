@@ -1,7 +1,13 @@
 {
   "version": 1,
-  "timestamp": 1548715028860,
-  "subscriptions": [],
+  "timestamp": 1564550399551,
+  "subscriptions": [{
+    "arn": "arn:aws:sns:us-east-1:123456789012:vcloudlab_topic:e25e346d-9713-44db-948c-428d528e7cae",
+    "topicArn": "arn:aws:sns:us-east-1:123456789012:vcloudlab_topic",
+    "endpoint": "aws-sqs://vcloudlab_queue2?amazonSQSEndpoint=http://sqs.vcloudlab.pro:9324&accessKey=&secretKey=",
+    "owner": "",
+    "protocol": "sqs"
+  }],
   "topics": [{
     "arn": "arn:aws:sns:us-east-1:123456789012:vcloudlab_topic",
     "name": "vcloudlab_topic"
